@@ -66,4 +66,19 @@ jobs:
         prerelease: false
         files: |
           LICENSE
-        body: ${{ inputs.release-content }}
+        body: |
+          ## custom-stack - ${{ inputs.release-version }}
+
+          All-in-One Platform
+
+          ## Deployment
+
+          ```
+          docker run --name custom-stack \
+          --rm -p 8080:8080 -p 8081:8081 \
+          ghcr.io/dirigiblelabs/custom-stack:${{ inputs.release-version }}
+          ```
+
+          ## Access points:
+
+          - [/services/web/ide/](http://localhost:8080/services/web/ide/) - Web IDE
