@@ -1,0 +1,1 @@
+java -jar ./application/target/custom-stack-application-*.jar
