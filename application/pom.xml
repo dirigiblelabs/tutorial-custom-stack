@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.dirigible.samples</groupId>
         <artifactId>custom-stack-parent</artifactId>
-        <version>0.0.1</version>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -18,8 +18,13 @@
 	<dependencies>
 	    <dependency>
             <groupId>io.dirigible.samples</groupId>
+            <artifactId>custom-stack-apis</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+	    <dependency>
+            <groupId>io.dirigible.samples</groupId>
             <artifactId>custom-stack-branding</artifactId>
-            <version>0.0.1</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
 		<!-- Core -->
@@ -200,9 +205,5 @@
 			</resource>
 		</resources>
 	</build>
-
-    <properties>
-        <license.header.location>../licensing-header.txt</license.header.location>
-    </properties>
 
 </project>

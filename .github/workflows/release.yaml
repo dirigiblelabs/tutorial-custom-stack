@@ -97,5 +97,9 @@ jobs:
 
           - [/services/web/ide/](http://localhost:8080/services/web/ide/) - Web IDE
 
-    - name: Push Release Version
-      run: git push
+    - name: Maven Set Snapshot Version
+      run: |
+        mvn versions:set -DnewVersion=${{ inputs.snapshot-version }}
+        git add .
+        git commit -m "version set to ${{ inputs.snapshot-version }} for development"
+        git push
