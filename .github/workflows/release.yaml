@@ -1,0 +1,69 @@
+name: Release - Platform
+
+on:
+  workflow_dispatch:
+    inputs:
+      release-version:
+        description: Release Version
+        required: true
+        default: 1.0.0
+      snapshot-version:
+        description: Snapshot Version
+        required: true
+        default: 1.0.0-SNAPSHOT
+
+run-name: 'version set to ${{ inputs.release-version }} for release'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.GH_TOKEN }}
+        fetch-depth: 0
+
+    - name: Cache local Maven repository
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-maven-
+
+    - name: "Configure Git"
+      run: |
+        git fetch
+        git checkout ${{ inputs.branch }}
+        git config user.name "${{ secrets.GH_USERNAME }}"
+        git config user.email "${{ secrets.GH_EMAIL }}"
+
+    - name: Maven Set Release Version
+      run: |
+        mvn versions:set -DnewVersion=${{ inputs.release-version }}
+        git add .
+        git commit -m "version set to ${{ inputs.release-version }} for release"
+
+    - name: Maven Build
+      run: mvn clean install
+
+    - name: Build and Push Docker Image (buildx)
+      run: |
+        docker buildx create --name dirigible-builder
+        docker buildx use dirigible-builder
+        cd application
+        docker buildx build --tag custom-stack -o type=image --platform=linux/arm64,linux/amd64 .
+        docker login ghcr.io -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+        docker buildx build --push --tag ghcr.io/dirigiblelabs/custom-stack:${{ inputs.release-version }} -o type=image --platform=linux/arm64,linux/amd64 .
+
+    - name: "Create Release"
+      uses: softprops/action-gh-release@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        tag_name: v${{ inputs.release-version }}
+        name: ${{ inputs.release-version }}
+        draft: false
+        prerelease: false
+        files: |
+          LICENSE
+        body: ${{ inputs.release-content }}
