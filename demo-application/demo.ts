@@ -1,5 +1,5 @@
 import { response } from "sdk/http";
-import { MyApi } from "/custom-api/MyApi";
+import { MyApi } from "../custom-api/MyApi";
 
 const myApiInstance = new MyApi();
 
