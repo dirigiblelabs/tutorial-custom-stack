@@ -1,20 +1,20 @@
 package io.dirigible.samples.api.domain;
 
-import java.time.ZonedDateTime;
+import java.util.Date;
 
 public class SubExample {
 
-	private ZonedDateTime date;
+	private Date date;
 
-	public ZonedDateTime getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(ZonedDateTime date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
-	public SubExample withDate(ZonedDateTime date) {
+	public SubExample withDate(Date date) {
 		setDate(date);
 		return this;
 	}

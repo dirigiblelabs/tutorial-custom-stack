@@ -8,19 +8,18 @@ import io.dirigible.samples.api.domain.Example;
 import io.dirigible.samples.api.domain.SubExample;
 import io.dirigible.samples.api.domain.input.ExampleRequest;
 import io.dirigible.samples.api.domain.output.ExampleResponse;
-import io.dirigible.samples.api.service.ExampleService;
 
-public class ExampleClient implements ExampleService {
+public class ExampleClientV2 {
 
-	@Override
-	public ExampleResponse doExample(ExampleRequest request) {
+	public String doExample(String requestAsString) {
+		final var gson = new Gson();
+		final var request = gson.fromJson(requestAsString, ExampleRequest.class);
 		final var exampleResponse = new ExampleResponse();
 		final var subexample = new SubExample().withDate(new Date());
 		final var example = new Example().withId(request.getExampleId()).withName("Example Name");
 		example.getSubexamples().add(subexample);
 		exampleResponse.getExamples().add(example);
-		new Gson().fromJson("", ExampleRequest.class);
-		return exampleResponse;
+		return gson.toJson(exampleResponse);
 	}
 
 }
