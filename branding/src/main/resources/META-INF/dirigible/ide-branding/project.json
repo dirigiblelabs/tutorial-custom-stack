@@ -3,6 +3,6 @@
 	"repository": {
 		"type": "git",
 		"branch": "master",
-		"url": "https://github.com/dirigiblelabs/sample-custom-stack.git"
+		"url": "https://github.com/dirigiblelabs/tutorial-custom-stack.git"
 	}
 }

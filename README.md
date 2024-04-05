@@ -59,7 +59,7 @@ const myApiInstance = new MyApi();
 
 const firstNumber = myApiInstance.add(5, 3);
 const secondNumber = myApiInstance.multiply(5, 3);
-const customMethod = myApiInstance.customMethod("sample-custom-stack");
+const customMethod = myApiInstance.customMethod("tutorial-custom-stack");
 const greetingMessage = MyApi.greet();
 
 const data = {

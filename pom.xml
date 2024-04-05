@@ -23,7 +23,7 @@
         <url>https://www.eclipse.org</url>
     </organization>
     <scm>
-        <url>https://github.com/dirigiblelabs/sample-custom-stack</url>
+        <url>https://github.com/dirigiblelabs/tutorial-custom-stack</url>
     </scm>
 
     <modules>
