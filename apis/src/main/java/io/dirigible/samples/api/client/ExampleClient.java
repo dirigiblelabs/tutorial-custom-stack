@@ -2,8 +2,6 @@ package io.dirigible.samples.api.client;
 
 import java.util.Date;
 
-import com.google.gson.Gson;
-
 import io.dirigible.samples.api.domain.Example;
 import io.dirigible.samples.api.domain.SubExample;
 import io.dirigible.samples.api.domain.input.ExampleRequest;
@@ -19,7 +17,6 @@ public class ExampleClient implements ExampleService {
 		final var example = new Example().withId(request.getExampleId()).withName("Example Name");
 		example.getSubexamples().add(subexample);
 		exampleResponse.getExamples().add(example);
-		new Gson().fromJson("", ExampleRequest.class);
 		return exampleResponse;
 	}
 
