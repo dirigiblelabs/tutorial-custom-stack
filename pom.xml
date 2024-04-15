@@ -256,7 +256,7 @@
 
         <postgresql.version>42.7.0</postgresql.version>
         <ngdbc.version>2.20.17</ngdbc.version>
-        <snowflake.version>3.15.0</snowflake.version>
+        <snowflake.version>3.15.1</snowflake.version>
         
         <activemq.version>5.17.3</activemq.version>
         <jsr250-api.version>1.0</jsr250-api.version>
@@ -330,7 +330,7 @@
         <spark.version>3.3.1</spark.version>
         <path-to-regexp.version>6.2.1</path-to-regexp.version>
         <javax.websocket-api.version>1.1</javax.websocket-api.version>
-        <jacoco.version>0.8.11</jacoco.version>
+        <jacoco.version>0.8.12</jacoco.version>
 
         <jakarta.validation.version>3.0.2</jakarta.validation.version>
         <org.springdoc.openapi.ui.version>1.7.0</org.springdoc.openapi.ui.version>

@@ -29,7 +29,7 @@
 		<dependency>
 			<groupId>uk.org.okapibarcode</groupId>
 			<artifactId>okapibarcode</artifactId>
-			<version>0.3.3</version>
+			<version>0.4.3</version>
 		</dependency>
 
 		<!-- Core -->
@@ -140,7 +140,7 @@
 		<dependency>
 			<groupId>com.codeborne</groupId>
 			<artifactId>selenide</artifactId>
-			<version>7.2.2</version>
+			<version>7.2.3</version>
 			<scope>test</scope>
 		</dependency>
 
