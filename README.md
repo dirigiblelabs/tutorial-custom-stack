@@ -7,29 +7,42 @@ It is good for exploration about the different features and their applicability 
 
 #### Docker
 
+- Build image locally (if you have local changes)
+```
+docker build application/. --tag ghcr.io/dirigiblelabs/custom-stack:latest
+```
+- Run directly the released image
 ```
 docker pull ghcr.io/dirigiblelabs/custom-stack:latest
 docker run --name custom-stack --rm -p 8080:8080 ghcr.io/dirigiblelabs/custom-stack:latest
 ```
-
-- For Apple's M1: provide `--platform=linux/arm64` for better performance		
+**Note:** for Apple's M1: provide `--platform=linux/arm64` for better performance		
 
 #### Build
 
 ```
 mvn clean install
 ```
+##### Maven Profiles
+
+| Profile Name      | Description                                 |
+|-------------------|---------------------------------------------|
+| tests             | Run unit and integration tests              |
+| unit-tests        | Run unit tests                              |
+| integration-tests | Run integration tests                       |
+| quick-build       | Build project quickly by skipping all tests |
+
 	
 #### Run
 
 ```
-java --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED -jar application/target/custom-stack-application-*.jar
+java -jar application/target/custom-stack-application-*.jar
 ```
 
 #### Debug
 
 ```
-java --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000 -jar application/target/custom-stack-application-*.jar
+java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000 -jar application/target/custom-stack-application-*.jar
 ```
 	
 #### Web

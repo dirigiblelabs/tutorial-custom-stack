@@ -3,7 +3,7 @@ import { response } from "sdk/http";
 const Code128 = Java.type("uk.org.okapibarcode.backend.Code128");
 const BufferedImage = Java.type("java.awt.image.BufferedImage");
 const Java2DRenderer = Java.type("uk.org.okapibarcode.output.Java2DRenderer");
-const Color = Java.type("java.awt.Color");
+const Color = Java.type("uk.org.okapibarcode.graphics.Color");
 const File = Java.type("java.io.File");
 const ImageIO = Java.type("javax.imageio.ImageIO");
 const FileUtils = Java.type("org.apache.commons.io.FileUtils");
