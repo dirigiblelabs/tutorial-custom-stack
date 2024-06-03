@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 class HomePageIT extends UserInterfaceIntegrationTest {
 
-    private static final String CUSTOM_STACK_HEADER = "custom-stack";
+    private static final String CUSTOM_STACK_HEADER = "Custom Stack";
 
     @Autowired
     private CustomStack customStack;
